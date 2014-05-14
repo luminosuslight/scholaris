@@ -12,8 +12,10 @@ Attention: The events of the current day and the OAuth2.0 authentification data 
 
 
 
-Build requirements: - python2.7, kivy (googleapiclient, httplib2, oauth2client and uritemplate are included)
-                    - an API Client ID and secret to access Google Calendar (-> data/calendar_backend.py)
-                    - for python-for-android a distribution with openssl
+Build requirements:
+- python2.7, kivy (googleapiclient, httplib2, oauth2client and uritemplate are included)
+- an API Client ID and secret to access Google Calendar (-> data/calendar_backend.py)
+  (here you can get these: code.google.com/apis/console/)
+- for python-for-android a distribution with openssl
 
 The repository contains a precompiled APK file with a valide API client ID and secret.
