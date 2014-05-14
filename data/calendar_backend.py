@@ -16,12 +16,12 @@ import pickle
 import sys
 import time
 
-OAUTH2_CLIENT_ID = "326208479597-m597jdm6r5g422g84tc0qf74m08nstuo.apps.googleusercontent.com"
-OAUTH2_CLIENT_SECRET = "fApsUPyvfpeP-hQY_q7ijWu6"
+OAUTH2_CLIENT_ID = "Your API client ID here"
+OAUTH2_CLIENT_SECRET = "Your API client secret here"
 
 CALENDAR_HOTWORDS = ("college", "university", "school",
                      "schule", "studium",
-                     u"école", "ecole", u"collège", u"études", "etudes")
+                     u"école", "ecole", u"collège", u"étude", "etude")
 
 class GoogleCalendarBackend():
     """ Calendar backend for Google Calendar. Uses OAuth2.0. """
