@@ -1,0 +1,180 @@
+#:kivy 1.0.9
+
+<GUI>:
+	scroll_view: scroll_view
+	layout_last_event: layout_last_event
+	layout_current_event: layout_current_event
+	layout_next_event: layout_next_event
+	last_break_label: last_break_label
+	next_break_label: next_break_label
+	canvas:
+		Color:
+			rgb: 0.3, 0.3, 0.3
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	LogoutLabel:
+		y: root.y + dp(60)
+		text: "Logout"
+	ScrollView:
+		id: scroll_view
+		x: root.x + root.width * 0.05
+		size_hint_x: None
+		width: root.width * 0.9
+		bar_color: 0, 0, 0, 0
+		do_scroll_x: False
+		BoxLayout:
+			size_hint_y: None
+			height: root.height + 1
+			orientation: "vertical"
+			canvas:
+				Color:
+					rgb: 0.3, 0.3, 0.3
+				Rectangle:
+					pos: self.pos
+					size: self.size
+			AnchorLayout:
+				size_hint_y: 0.22
+				id: layout_last_event
+			BreakLabel:
+				size_hint_y: 0.08
+				id: last_break_label
+			AnchorLayout:
+				size_hint_y: 0.4
+				id: layout_current_event
+			BreakLabel:
+				size_hint_y: 0.08
+				id: next_break_label
+			AnchorLayout:
+				size_hint_y: 0.22
+				id: layout_next_event
+		
+
+<NoneCurrentEventCard>:
+	orientation: "vertical"
+	canvas:
+		Color:
+			rgb: 1, 1, 1
+		BorderImage:
+            source: 'data/media/shadow32.png'
+            border: (32,32,32,32)
+            size:(self.width+62, self.height+62)
+            pos: (self.x - 31, self.y - 31)
+		Color:
+			rgb: 0.9, 0.9, 0.9
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	BoxLayout:
+		orientation: "horizontal"
+		size_hint_y: 0.25
+		SmallEventLabelLeft:
+			text: root.location
+		SmallEventLabelRight:
+			text: root.start_time
+	EventTitleLabel:
+		size_hint_y: 0.5
+		text: root.title
+	BoxLayout:
+		orientation: "horizontal"
+		size_hint_y: 0.25
+		SmallEventLabelLeft:
+			text: root.description
+		SmallEventLabelRight:
+			text: root.end_time
+
+<CurrentEventCard>:
+	orientation: "vertical"
+	canvas:
+		Color:
+			rgb: 1, 1, 1
+		BorderImage:
+            source: 'data/media/shadow32.png'
+            border: (32,32,32,32)
+            size:(self.width+62, self.height+62)
+            pos: (self.x - 31, self.y - 31)
+		Color:
+			rgb: 0.9, 0.9, 0.9
+		Rectangle:
+			pos: self.pos
+			size: self.size
+		Color:
+			rgba: 0, 0.5, 1, 0.1
+		Rectangle:
+			pos: self.x, self.y + self.height * (1 - root.marker_pos)
+			size: self.width, self.height * root.marker_pos
+	BoxLayout:
+		orientation: "horizontal"
+		size_hint_y: 0.2
+		SmallEventLabelLeft:
+			text: root.location
+		SmallEventLabelRight:
+			text: root.start_time
+	AnchorLayout:
+		BoxLayout:
+			orientation: "vertical"
+			EventTitleLabel:
+				size_hint_y: 0.25
+				text: root.title
+			EventTitleLabel:
+				size_hint_y: 0.35
+				text: root.time_left_string
+		LineDecoration:
+			color_0: 0.3, 0.3, 0.3, 1.0
+			color_1: 0.3, 0.3, 0.3, 1.0
+	BoxLayout:
+		orientation: "horizontal"
+		size_hint_y: 0.2
+		SmallEventLabelLeft:
+			text: root.description
+		SmallEventLabelRight:
+			text: root.end_time
+
+<BreakCard>:
+	BreakLabel:
+		font_size: "26sp"
+		text: root.time_left_string
+	CircleDecoration:
+		size_hint: (None, None)
+		size: min(root.width, root.height) * 0.9, min(root.width, root.height) * 0.9
+		color_0: (1, 1, 1, 0.6) if root.marker_pos < 0.5 else (1, 0, 0, 0.6)
+		color_1: (1, 1, 1, 0.75) if root.marker_pos < 0.75 else (1, 0, 0, 0.75)
+		color_2: (1, 1, 1, 0.9) if root.marker_pos < 0.9 else (1, 0, 0, 0.9)
+
+<EventTitleLabel@Label>:
+	font_size: "26sp"
+	color: 0, 0, 0, 1
+	font_name: "data/Caviar Dreams Bold.ttf"
+	text_size: self.width - dp(20), self.height
+	valign: "middle"
+	halign: "center"
+	
+<SmallEventLabelLeft@Label>:
+	font_size: "20sp"
+	color: 0, 0, 0, 1
+	font_name: "data/Existence-Light.ttf"
+	text_size: self.width - dp(20), self.height
+	valign: "middle"
+	halign: "left"
+	size_hint_x: 0.7
+
+<SmallEventLabelRight@Label>:
+	font_size: "20sp"
+	color: 0, 0, 0, 1
+	font_name: "data/Existence-Light.ttf"
+	text_size: self.width - dp(20), self.height
+	valign: "middle"
+	halign: "right"
+	size_hint_x: 0.3
+
+<BreakLabel@Label>:
+	font_size: "20sp"
+	color: 0.8, 0.8, 0.8, 1
+	font_name: "data/Caviar Dreams Bold.ttf"
+
+<LogoutLabel@Label>:
+	size_hint_y: None
+	height: "40dp"
+	font_size: "30sp"
+	font_name: "data/Caviar Dreams Bold.ttf"
+	color: 1, 0.2, 0.2, 1

@@ -1,0 +1,154 @@
+#:kivy 1.0.9
+
+#:import math math 
+
+<CircleDecoration>:
+	canvas:
+    	Color:
+    		rgba: root.color_0
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_0 * root.direction_0, root.angle_0 * root.direction_0 + root.segment_width_0
+            width: dp(3.5)
+            cap: "none"
+        Color:
+    		rgba: root.color_1
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(25), root.angle_1 * root.direction_1, root.angle_1 * root.direction_1 + root.segment_width_1
+            width: dp(3.5)
+            cap: "none"
+        Color:
+    		rgba: root.color_2
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(40), root.angle_2 * root.direction_2, root.angle_2 * root.direction_2 + root.segment_width_2
+            width: dp(3.5)
+            cap: "none"
+
+<GearDecoration>:
+	canvas:
+		Color:
+    		rgba: 1, 1, 1, 0.8
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10)
+            width: 1.5
+            cap: "none"
+    	Color:
+    		rgba: 1, 1, 1, 0.8
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_0, root.angle_0 + root.segment_width_0 * 0.5
+            width: 3.5
+            cap: "none"
+        Color:
+    		rgba: 1, 1, 1, 0.8
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), -root.angle_1, -root.angle_1 + root.segment_width_1 * 0.5
+            width: 3.5
+            cap: "none"
+        Color:
+    		rgba: 1, 1, 1, 0.8
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_2, root.angle_2 + root.segment_width_2 * 0.5
+            width: 3.5
+            cap: "none"
+
+<CrossDecoration>:
+	canvas:
+		Color:
+    		rgba: 1, 1, 1, 0.8
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(20)
+            width: 1.5
+            cap: "none"
+    	Color:
+    		rgba: 1, 1, 1, 0.8
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_0, root.angle_0 + 10
+            width: 5
+            cap: "none"
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_0 + 90, root.angle_0 + 100
+            width: 5
+            cap: "none"
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_0 +180 , root.angle_0 + 190
+            width: 5
+            cap: "none"
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(10), root.angle_0 + 270, root.angle_0 + 280
+            width: 5
+            cap: "none"
+
+<DotDecoration>:
+	radius: (self.width / 2.0 + dp(10))
+	canvas:
+		Color:
+    		rgba: self.color_0
+    	Ellipse:
+            size: dp(5), dp(5)
+            pos: self.center_x + self.radius * math.sin(math.radians(self.angle_0)), self.center_y + self.radius * math.cos(math.radians(self.angle_0))
+
+<RingDecoration>:
+	canvas:
+		Color:
+    		rgba: self.color_0
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(7), root.angle_0 * root.direction_0, (root.angle_0 + 300) * root.direction_0
+            width: 2
+            cap: "none"
+        Color:
+    		rgba: self.color_1
+        Line:
+        	circle: self.center_x, self.center_y, self.width * 0.5 + dp(15), root.angle_1 * -root.direction_0, (root.angle_1 + 300) * -root.direction_0
+            width: 2
+            cap: "none"
+
+<LineDecoration>:
+	canvas:
+		Color:
+    		rgba: self.color_0
+        Line:
+        	points: max(self.x, self.x + self.width * self.pos0_0), self.y, max(self.x, self.x + self.width * self.pos0_1), self.y
+            width: dp(2)
+            cap: "none"
+        Line:
+        	points: max(self.x, self.x + self.width * self.pos0_0), self.top, max(self.x, self.x + self.width * self.pos0_1), self.top
+            width: dp(2)
+            cap: "none"
+        Color:
+    		rgba: self.color_1
+        Line:
+        	points: max(self.x, self.x + self.width * self.pos1_0), self.y, max(self.x, self.x + self.width * self.pos1_1), self.y
+            width: dp(2)
+            cap: "none"
+        Line:
+        	points: max(self.x, self.x + self.width * self.pos1_0), self.top, max(self.x, self.x + self.width * self.pos1_1), self.top
+            width: dp(2)
+            cap: "none"
+        
+ 
+<LinearDotsDecoration>:
+	canvas:
+		Color:
+    		rgba: self.color_0
+    	Ellipse:
+            size: dp(7), dp(7)
+            pos: self.x + self.width * (self.pos_0 * self.direction_0 % 1.0), self.y - dp(12)
+        Ellipse:
+            size: dp(7), dp(7)
+            pos: self.x + self.width * (self.pos_0 * self.direction_0 % 1.0), self.top + dp(5)
+        Color:
+    		rgba: self.color_1
+    	Ellipse:
+            size: dp(7), dp(7)
+            pos: self.x + self.width * (self.pos_1 * self.direction_1 % 1.0), self.y - dp(12)
+        Ellipse:
+            size: dp(7), dp(7)
+            pos: self.x + self.width * (self.pos_1 * self.direction_1 % 1.0), self.top + dp(5)
+        Color:
+    		rgba: self.color_2
+    	Ellipse:
+            size: dp(7), dp(7)
+            pos: self.x + self.width * (self.pos_2 * self.direction_2 % 1.0), self.y - dp(12)
+        Ellipse:
+            size: dp(7), dp(7)
+            pos: self.x + self.width * (self.pos_2 * self.direction_2 % 1.0), self.top + dp(5)
+ 
